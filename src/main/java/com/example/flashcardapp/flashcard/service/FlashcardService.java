@@ -5,6 +5,7 @@ import com.example.flashcardapp.flashcard.repository.FlashcardRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FlashcardService {
@@ -17,5 +18,9 @@ public class FlashcardService {
 
     public List<Flashcard> getAll() {
         return flashcardRepository.findAll();
+    }
+
+    public Optional<Flashcard> getById(Long id) {
+        return flashcardRepository.findById(id);
     }
 }
