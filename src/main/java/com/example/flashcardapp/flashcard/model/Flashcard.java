@@ -6,10 +6,13 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
+@NamedQuery(name = "Flashcard.findFlashCardsByPoints5AndGreater",
+        query = "select f from Flashcard f where f.points >= 5")
 public class Flashcard {
 
 

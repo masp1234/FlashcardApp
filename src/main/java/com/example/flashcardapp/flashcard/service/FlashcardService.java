@@ -2,6 +2,7 @@ package com.example.flashcardapp.flashcard.service;
 
 import com.example.flashcardapp.flashcard.model.Flashcard;
 import com.example.flashcardapp.flashcard.repository.FlashcardRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,5 +23,9 @@ public class FlashcardService {
 
     public Optional<Flashcard> getById(Long id) {
         return flashcardRepository.findById(id);
+    }
+
+    public List<Flashcard> getFlashcardsByPointsFiveOrGreater() {
+        return flashcardRepository.getFlashcardsByPointsFiveOrGreater();
     }
 }
