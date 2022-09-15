@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 @Entity
 @NamedQuery(name = "Flashcard.findFlashCardsByPoints5AndGreater",
         query = "select f from Flashcard f where f.points >= 5")

@@ -9,4 +9,8 @@ public interface IDeckRepository {
     Deck getDeckById(Long id);
 
     void addDeck(Deck deck);
+
+    List<Deck> getAllDecksOrderedByCategory();
+
+    void saveAllDecks(List<Deck> decks);
 }

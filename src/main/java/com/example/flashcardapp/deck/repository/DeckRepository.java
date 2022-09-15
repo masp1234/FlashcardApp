@@ -28,4 +28,18 @@ public class DeckRepository implements IDeckRepository{
     public void addDeck(Deck deck) {
         entityManager.persist(deck);
     }
+
+    @Override
+    public List<Deck> getAllDecksOrderedByCategory() {
+        String query = "select d from Deck d order by d.category";
+        return entityManager.createQuery(query).getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void saveAllDecks(List<Deck> decks) {
+        for (Deck deck: decks) {
+            entityManager.persist(deck);
+        }
+    }
 }
