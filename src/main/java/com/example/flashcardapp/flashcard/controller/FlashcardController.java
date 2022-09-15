@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping("api/flashcards")
+@RequestMapping("api/flashcard")
 @RestController
 public class FlashcardController {
 

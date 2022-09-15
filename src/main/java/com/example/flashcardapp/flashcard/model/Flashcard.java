@@ -1,6 +1,7 @@
 package com.example.flashcardapp.flashcard.model;
 
 import com.example.flashcardapp.deck.model.Deck;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,6 +34,7 @@ public class Flashcard {
 
     @ManyToOne
     @JoinColumn(name = "deck_id")
+    @JsonBackReference
     private Deck deck;
 
     public Flashcard(String questionText, String answerText, int points, Deck deck) {
