@@ -30,6 +30,7 @@ public class DeckRepository implements IDeckRepository{
     }
 
     @Override
+    // TODO hvorfor behøver denne ikke være @transactional?
     public List<Deck> getAllDecksOrderedByCategory() {
         String query = "select d from Deck d order by d.category";
         return entityManager.createQuery(query).getResultList();

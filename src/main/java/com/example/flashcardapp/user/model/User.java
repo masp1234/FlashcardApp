@@ -12,6 +12,9 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+
+// "user" er reserveret i MySQL, så bliver nødt til at bruge "users"
+@Table(name = "users")
 public class User {
 
     @Id

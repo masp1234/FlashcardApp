@@ -31,7 +31,7 @@ public class FlashcardAppApplication {
                 return (args) -> {
 
 
-                    Deck deck = new Deck("Deck1", "Kategori");
+                    Deck deck = new Deck("Deck1", "kategori");
                     deckRepository.addDeck(deck);
 
                     List<Deck> decks = new ArrayList<>();
@@ -71,6 +71,7 @@ public class FlashcardAppApplication {
                     flashcardRepository.saveAll(flashcards);
 
                     System.out.println(deckRepository.getAllDecksOrderedByCategory());
+
 
 
 
