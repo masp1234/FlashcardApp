@@ -1,5 +1,6 @@
 package com.example.flashcardapp.flashcard.model;
 
+import com.example.flashcardapp.deck.model.Deck;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,9 +31,15 @@ public class Flashcard {
     @Column(name = "points")
     private int points;
 
-    public Flashcard(String questionText, String answerText, int points) {
+    @ManyToOne
+    @JoinColumn(name = "deck_id")
+    private Deck deck;
+
+    public Flashcard(String questionText, String answerText, int points, Deck deck) {
         this.questionText = questionText;
         this.answerText = answerText;
         this.points = points;
+        this.deck = deck;
     }
 }
+

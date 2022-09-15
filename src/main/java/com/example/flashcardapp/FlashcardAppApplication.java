@@ -1,5 +1,8 @@
 package com.example.flashcardapp;
 
+import com.example.flashcardapp.deck.model.Deck;
+import com.example.flashcardapp.deck.repository.DeckRepository;
+import com.example.flashcardapp.deck.repository.IDeckRepository;
 import com.example.flashcardapp.flashcard.model.Flashcard;
 import com.example.flashcardapp.flashcard.repository.FlashcardRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -20,34 +23,50 @@ public class FlashcardAppApplication {
     @Bean
     public CommandLineRunner importData(
 
-            FlashcardRepository flashcardRepository
+            FlashcardRepository flashcardRepository,
+            IDeckRepository deckRepository
     )
     {
                 return (args) -> {
+
+
+                    Deck deck = new Deck("Deck1", "Kategori");
+                    deckRepository.addDeck(deck);
 
                     final List<Flashcard> flashcards = new ArrayList<>();
                     flashcards.add(new Flashcard(
                             "Hvad er scrum?",
                             "En process-model",
-                            3
+                            3, deck
                     ));
                     flashcards.add(new Flashcard(
                             "Hvad er XP?",
                             "En udviklings-model",
-                            3
+                            3, deck
                     ));
                     flashcards.add(new Flashcard(
                             "Hvad menes der med Product Backlog?",
                             "En samling af alle de artefakter, der skal laves" +
                                     "i et scrum-projekt. Udvikler/ændre sig over tid(er levende)",
-                            5
+                            5, deck
                     ));
                     flashcards.add(new Flashcard(
                             "Hvad menes der med Sprint Backlog?",
                             "En samling af artefakter, der er udvalgt til " +
                                     "at skulle laves i et givent sprint" +
                                     ". Artefakterne udvælges fra Product Backlog",
-                            5
+                            5, deck
                     ));
+
+
+
                     flashcardRepository.saveAll(flashcards);
+
+
+
+
+
+
+
+
                 };}}

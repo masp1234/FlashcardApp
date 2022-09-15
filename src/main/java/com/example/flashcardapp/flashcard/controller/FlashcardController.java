@@ -31,9 +31,7 @@ public class FlashcardController {
     public ResponseEntity<Flashcard> getFlashcardById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(flashcardService.getById(id).get(), HttpStatus.OK);
     }
-    public ResponseEntity<Flashcard> getFlashcardsByPointsFiveOrGreater() {
-        return flashcardService.getFlashcardsByPointsFiveOrGreater();
-    }
+
 
 
 }
