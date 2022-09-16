@@ -8,4 +8,9 @@ import java.util.List;
 public interface FlashcardRepository extends JpaRepository<Flashcard, Long> {
 
 
+    List<Flashcard> getFlashcardsByPointsGreaterThanEqual(int points);
+
+    List<Flashcard> getFlashcardsByPointsLessThanEqual(int points);
+
+
 }

@@ -32,6 +32,15 @@ public class FlashcardController {
         return new ResponseEntity<>(flashcardService.getById(id).get(), HttpStatus.OK);
     }
 
+    @GetMapping("/points/greater-or-equals/{value}")
+    public ResponseEntity<List<Flashcard>> getFlashcardsGreaterOrEqualTo(@PathVariable("value") int points) {
+        return new ResponseEntity<>(flashcardService.getFlashcardsGreaterOrEqualTo(points), HttpStatus.OK);
+    }
+    @GetMapping("/points/less-or-equals/{value}")
+    public ResponseEntity<List<Flashcard>> getFlashcardsLowerOrEqualsTo(@PathVariable("value") int points) {
+        return new ResponseEntity<>(flashcardService.getFlashcardsLessThanOrEqualsTo(points), HttpStatus.OK);
+    }
+
 
 
 }

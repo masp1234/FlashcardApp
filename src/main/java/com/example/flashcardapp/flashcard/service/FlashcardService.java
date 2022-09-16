@@ -23,6 +23,13 @@ public class FlashcardService {
     public Optional<Flashcard> getById(Long id) {
         return flashcardRepository.findById(id);
     }
+    public List<Flashcard> getFlashcardsGreaterOrEqualTo(int points) {
+        return flashcardRepository.getFlashcardsByPointsGreaterThanEqual(points);
+    }
+
+    public List<Flashcard> getFlashcardsLessThanOrEqualsTo(int points) {
+        return flashcardRepository.getFlashcardsByPointsLessThanEqual(points);
+    }
 
 
 }
