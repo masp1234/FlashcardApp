@@ -8,7 +8,7 @@ public interface IDeckRepository {
 
     Deck getDeckById(Long id);
 
-    void addDeck(Deck deck);
+    Deck addDeck(Deck deck);
 
     List<Deck> getAllDecksOrderedByCategory();
 

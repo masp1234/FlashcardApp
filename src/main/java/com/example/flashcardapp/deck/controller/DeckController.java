@@ -4,10 +4,7 @@ import com.example.flashcardapp.deck.model.Deck;
 import com.example.flashcardapp.deck.service.DeckService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api/deck")
 @RestController
@@ -22,6 +19,12 @@ public class DeckController {
     @GetMapping("/{id}")
     public ResponseEntity<Deck> getDeckById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(deckService.getDeckById(id), HttpStatus.OK);
+    }
+
+    //TODO Virker ikke. Prøv at tilføje method=POST i html-formularen
+    @PostMapping(value = "/add")
+    public void addDeck(@RequestBody Deck deck) {
+        System.out.println(deckService.addDeck(deck));
     }
 }
 

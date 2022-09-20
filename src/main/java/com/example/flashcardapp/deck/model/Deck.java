@@ -23,8 +23,10 @@ public class Deck {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "category")
     private String category;
 
     //TODO Er nået til at skulle lave et relationship mellem Deck og Flashcard

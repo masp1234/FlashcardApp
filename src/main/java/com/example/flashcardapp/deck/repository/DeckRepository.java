@@ -25,8 +25,9 @@ public class DeckRepository implements IDeckRepository{
 
     //Nødvendig for at entityManager kan eksekvere(ved ikke hvorfor)
     @Transactional
-    public void addDeck(Deck deck) {
+    public Deck addDeck(Deck deck) {
         entityManager.persist(deck);
+        return deck;
     }
 
     @Override

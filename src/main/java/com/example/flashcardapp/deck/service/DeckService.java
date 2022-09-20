@@ -17,4 +17,7 @@ public class DeckService {
     public Deck getDeckById(Long id) {
         return deckRepository.getDeckById(id);
     }
+    public Deck addDeck(Deck deck) {
+       return deckRepository.addDeck(deck);
+    }
 }
