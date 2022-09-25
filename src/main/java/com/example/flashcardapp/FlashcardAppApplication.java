@@ -2,7 +2,6 @@ package com.example.flashcardapp;
 
 import com.example.flashcardapp.deck.model.Deck;
 import com.example.flashcardapp.deck.repository.DeckRepository;
-import com.example.flashcardapp.deck.repository.IDeckRepository;
 import com.example.flashcardapp.flashcard.model.Flashcard;
 import com.example.flashcardapp.flashcard.repository.FlashcardRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -10,7 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,21 +23,21 @@ public class FlashcardAppApplication {
     public CommandLineRunner importData(
 
             FlashcardRepository flashcardRepository,
-            IDeckRepository deckRepository
+            DeckRepository deckRepository
     )
     {
                 return (args) -> {
 
 
                     Deck deck = new Deck("Deck1", "kategori");
-                    deckRepository.addDeck(deck);
+                    deckRepository.save(deck);
 
                     List<Deck> decks = new ArrayList<>();
                     decks.add(new Deck("Deck2", "dgfafg"));
                     decks.add(new Deck("Deck3", "sssg"));
                     decks.add(new Deck("Deck4", "agfhg"));
 
-                    deckRepository.saveAllDecks(decks);
+                    deckRepository.saveAll(decks);
 
                     final List<Flashcard> flashcards = new ArrayList<>();
                     flashcards.add(new Flashcard(

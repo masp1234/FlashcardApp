@@ -1,10 +1,13 @@
 package com.example.flashcardapp.deck.controller;
 
+import com.example.flashcardapp.deck.dto.DeckDto;
 import com.example.flashcardapp.deck.model.Deck;
 import com.example.flashcardapp.deck.service.DeckService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RequestMapping("/api/deck")
 @RestController
@@ -17,7 +20,8 @@ public class DeckController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Deck> getDeckById(@PathVariable("id") Long id) {
+    public ResponseEntity<DeckDto> getDeckById(@PathVariable("id") Long id) {
+
         return new ResponseEntity<>(deckService.getDeckById(id), HttpStatus.OK);
     }
 

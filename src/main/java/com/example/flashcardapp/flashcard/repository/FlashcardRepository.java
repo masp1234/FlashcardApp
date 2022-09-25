@@ -13,4 +13,6 @@ public interface FlashcardRepository extends JpaRepository<Flashcard, Long> {
     List<Flashcard> getFlashcardsByPointsLessThanEqual(int points);
 
 
+
+
 }

@@ -1,23 +1,34 @@
 package com.example.flashcardapp.deck.service;
 
+import com.example.flashcardapp.deck.dto.DeckDto;
+import com.example.flashcardapp.deck.factory.DeckDtoFactory;
 import com.example.flashcardapp.deck.model.Deck;
 import com.example.flashcardapp.deck.repository.DeckRepository;
-import com.example.flashcardapp.deck.repository.IDeckRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 
 @Service
 public class DeckService {
 
-    private IDeckRepository deckRepository;
+    private DeckRepository deckRepository;
 
-    public DeckService(IDeckRepository deckRepository) {
+    public DeckService(DeckRepository deckRepository) {
         this.deckRepository = deckRepository;
     }
 
-    public Deck getDeckById(Long id) {
-        return deckRepository.getDeckById(id);
+    public DeckDto getDeckById(Long id) {
+        return DeckDtoFactory.convertFromEntityToDto(deckRepository.findById(id).get());
+
     }
-    public Deck addDeck(Deck deck) {
-       return deckRepository.addDeck(deck);
+    public DeckDto addDeck(Deck deck) {
+       return DeckDtoFactory.convertFromEntityToDto(deckRepository.save(deck));
+
+    }
+    public List<DeckDto> getAllDecks() {
+        return DeckDtoFactory.fromEntitiesToDtos(deckRepository.findAll());
+
+
     }
 }

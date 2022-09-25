@@ -17,6 +17,7 @@ import java.util.List;
 
 // En tom constructor er nødvendig for at bruge JPA
 @NoArgsConstructor
+
 public class Deck {
 
     @Id
