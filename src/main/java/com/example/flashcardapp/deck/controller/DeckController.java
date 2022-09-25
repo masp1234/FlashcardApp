@@ -1,6 +1,8 @@
 package com.example.flashcardapp.deck.controller;
 
+import com.example.flashcardapp.advice.ApiRequestException;
 import com.example.flashcardapp.deck.dto.DeckDto;
+import com.example.flashcardapp.deck.factory.DeckDtoFactory;
 import com.example.flashcardapp.deck.model.Deck;
 import com.example.flashcardapp.deck.service.DeckService;
 import org.springframework.http.HttpStatus;
@@ -21,8 +23,9 @@ public class DeckController {
 
     @GetMapping("/{id}")
     public ResponseEntity<DeckDto> getDeckById(@PathVariable("id") Long id) {
-
-        return new ResponseEntity<>(deckService.getDeckById(id), HttpStatus.OK);
+        Optional<DeckDto> item = Optional.of(deckService.getDeckById(id)
+                .orElseThrow(() -> new ApiRequestException("Could not find deck with id: " + id)));
+        return ResponseEntity.ok().body(item.get());
     }
 
     //TODO Virker ikke. Prøv at tilføje method=POST i html-formularen
