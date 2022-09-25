@@ -23,9 +23,11 @@ public class DeckController {
 
     @GetMapping("/{id}")
     public ResponseEntity<DeckDto> getDeckById(@PathVariable("id") Long id) {
-        Optional<DeckDto> item = Optional.of(deckService.getDeckById(id)
-                .orElseThrow(() -> new ApiRequestException("Could not find deck with id: " + id)));
-        return ResponseEntity.ok().body(item.get());
+        Optional<Deck> item = deckService.getDeckById(id);
+        if (item.isEmpty()) {
+            throw new ApiRequestException("Could not find deck with id: " + id);
+        }
+        return new ResponseEntity<>(DeckDtoFactory.convertFromEntityToDto(item.get()), HttpStatus.OK);
     }
 
     //TODO Virker ikke. Prøv at tilføje method=POST i html-formularen

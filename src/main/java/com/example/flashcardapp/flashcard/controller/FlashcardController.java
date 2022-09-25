@@ -1,5 +1,8 @@
 package com.example.flashcardapp.flashcard.controller;
 
+import com.example.flashcardapp.advice.ApiRequestException;
+import com.example.flashcardapp.flashcard.dto.FlashcardDto;
+import com.example.flashcardapp.flashcard.factory.FlashcardDtoFactory;
 import com.example.flashcardapp.flashcard.model.Flashcard;
 import com.example.flashcardapp.flashcard.service.FlashcardService;
 import org.springframework.http.HttpStatus;
@@ -22,9 +25,12 @@ public class FlashcardController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Flashcard>> getAllFlashcards() {
+    public ResponseEntity<List<FlashcardDto>> getAllFlashcards() {
         List<Flashcard> flashcards = flashcardService.getAll();
-        return new ResponseEntity<>(flashcards, HttpStatus.OK);
+        if (flashcards.isEmpty()) {
+            throw new ApiRequestException("No flashcards found");
+        }
+        return new ResponseEntity<>(FlashcardDtoFactory.fromEntitiesToDtos(flashcards), HttpStatus.OK);
 
     }
     @GetMapping("/{id}")

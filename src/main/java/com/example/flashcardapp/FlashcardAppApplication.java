@@ -68,6 +68,7 @@ public class FlashcardAppApplication {
 
                     flashcardRepository.saveAll(flashcards);
 
+
                     System.out.println(deckRepository.getAllDecksOrderedByCategory());
 
 

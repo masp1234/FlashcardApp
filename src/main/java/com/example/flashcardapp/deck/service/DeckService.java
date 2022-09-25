@@ -22,10 +22,8 @@ public class DeckService {
         this.deckRepository = deckRepository;
     }
 
-    public Optional<DeckDto> getDeckById(Long id) {
-        Deck deck = deckRepository.findById(id).get();
-        DeckDto deckDto = DeckDtoFactory.convertFromEntityToDto(deck);
-        return Optional.of(deckDto);
+    public Optional<Deck> getDeckById(Long id) {
+        return deckRepository.findById(id);
 
     }
     public DeckDto addDeck(Deck deck) {
