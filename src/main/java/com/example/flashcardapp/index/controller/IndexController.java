@@ -2,7 +2,7 @@ package com.example.flashcardapp.index.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
+/*
 @Controller
 public class IndexController {
 
@@ -11,3 +11,5 @@ public class IndexController {
         return "index.html";
     }
 }
+
+ */

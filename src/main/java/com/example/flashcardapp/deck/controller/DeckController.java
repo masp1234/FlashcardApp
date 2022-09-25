@@ -30,10 +30,15 @@ public class DeckController {
         return new ResponseEntity<>(DeckDtoFactory.convertFromEntityToDto(item.get()), HttpStatus.OK);
     }
 
-    //TODO Virker ikke. Prøv at tilføje method=POST i html-formularen
+    //TODO Lav DTO's til alt og begge veje: fra entity til dto og omvendt
+
+
     @PostMapping(value = "/add")
-    public void addDeck(@RequestBody Deck deck) {
-        System.out.println(deckService.addDeck(deck));
+    public ResponseEntity<DeckDto> addDeck(@RequestParam("name") String name,
+                        @RequestParam("category") String category) {
+        Deck deck = new Deck(name, category);
+        deckService.addDeck(deck);
+        return new ResponseEntity<>(DeckDtoFactory.convertFromEntityToDto(deck), HttpStatus.OK);
     }
 }
 

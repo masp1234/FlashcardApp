@@ -22,7 +22,9 @@ public class DeckDtoFactory {
         deckDto.setId(deck.getId());
         deckDto.setName(deck.getName());
         deckDto.setCategory(deck.getCategory());
-        deckDto.setFlashcards(FlashcardDtoFactory.fromEntitiesToDtos(deck.getFlashcards()));
+        if (deck.getFlashcards() != null) {
+            deckDto.setFlashcards(FlashcardDtoFactory.fromEntitiesToDtos(deck.getFlashcards()));
+        }
         return deckDto;
     }
 }
