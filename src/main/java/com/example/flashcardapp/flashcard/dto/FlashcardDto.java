@@ -1,7 +1,5 @@
 package com.example.flashcardapp.flashcard.dto;
 
-import com.example.flashcardapp.deck.dto.DeckDto;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,8 +15,6 @@ public class FlashcardDto {
 
     private int points;
 
-    @JsonBackReference
-    private DeckDto deck;
 
 
 }

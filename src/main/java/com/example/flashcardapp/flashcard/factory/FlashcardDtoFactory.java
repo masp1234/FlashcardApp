@@ -26,7 +26,6 @@ public class FlashcardDtoFactory {
         flashcardDto.setQuestionText(flashcard.getQuestionText());
         flashcardDto.setAnswerText(flashcard.getAnswerText());
         flashcardDto.setPoints(flashcard.getPoints());
-        flashcardDto.setDeck(DeckDtoFactory.convertFromEntityToDto(flashcard.getDeck()));
         return flashcardDto;
     }
 }
