@@ -5,8 +5,13 @@ import com.example.flashcardapp.deck.factory.DeckDtoFactory;
 import com.example.flashcardapp.deck.model.Deck;
 import com.example.flashcardapp.deck.repository.DeckRepository;
 import net.bytebuddy.dynamic.DynamicType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,9 +35,18 @@ public class DeckService {
        return DeckDtoFactory.convertFromEntityToDto(deckRepository.save(deck));
 
     }
-    public List<DeckDto> getAllDecks() {
-        return DeckDtoFactory.fromEntitiesToDtos(deckRepository.findAll());
+    public List<Deck> getAllDecks(Integer pageNo, Integer pageSize, String sortBy) {
 
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
 
+        Page<Deck> pagedResult = deckRepository.findAll(paging);
+
+        if (pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        }
+        else {
+            return new ArrayList<Deck>();
+        }
     }
+
 }

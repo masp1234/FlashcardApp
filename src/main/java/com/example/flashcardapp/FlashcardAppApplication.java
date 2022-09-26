@@ -36,6 +36,15 @@ public class FlashcardAppApplication {
                     decks.add(new Deck("Deck2", "dgfafg"));
                     decks.add(new Deck("Deck3", "sssg"));
                     decks.add(new Deck("Deck4", "agfhg"));
+                    decks.add(new Deck("Deck5", "dgfafg"));
+                    decks.add(new Deck("Deck6", "sssg"));
+                    decks.add(new Deck("Deck7", "agfhg"));
+                    decks.add(new Deck("Deck8", "dgfafg"));
+                    decks.add(new Deck("Deck9", "sssg"));
+                    decks.add(new Deck("Deck10", "agfhg"));
+                    decks.add(new Deck("Deck11", "dgfafg"));
+                    decks.add(new Deck("Deck12", "sssg"));
+                    decks.add(new Deck("Deck13", "agfhg"));
 
                     deckRepository.saveAll(decks);
 

@@ -5,10 +5,12 @@ import com.example.flashcardapp.deck.dto.DeckDto;
 import com.example.flashcardapp.deck.factory.DeckDtoFactory;
 import com.example.flashcardapp.deck.model.Deck;
 import com.example.flashcardapp.deck.service.DeckService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequestMapping("/api/deck")
@@ -40,5 +42,15 @@ public class DeckController {
         deckService.addDeck(deck);
         return new ResponseEntity<>(DeckDtoFactory.convertFromEntityToDto(deck), HttpStatus.OK);
     }
+    @GetMapping("/all")
+    public ResponseEntity<List<Deck>> getAllDecks(
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "id") String sortBy) {
+
+        List<Deck> decks = deckService.getAllDecks(pageNo, pageSize, sortBy);
+        return new ResponseEntity<>(decks, HttpStatus.OK);
+    }
+
 }
 
