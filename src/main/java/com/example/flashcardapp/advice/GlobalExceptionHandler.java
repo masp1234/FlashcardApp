@@ -17,12 +17,12 @@ public class GlobalExceptionHandler {
 
         HttpStatus badRequest = HttpStatus.NOT_FOUND;
 
-        ApiException apiException = new ApiException(
+        ErrorMessage errorMessage = new ErrorMessage(
                 e.getMessage(),
                 e,
                 badRequest,
                 ZonedDateTime.now(ZoneId.of("Z"))
         );
-        return new ResponseEntity<>(apiException, badRequest);
+        return new ResponseEntity<>(errorMessage, badRequest);
     }
 }

@@ -4,6 +4,7 @@ import com.example.flashcardapp.deck.model.Deck;
 import com.example.flashcardapp.deck.repository.DeckRepository;
 import com.example.flashcardapp.flashcard.model.Flashcard;
 import com.example.flashcardapp.flashcard.repository.FlashcardRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,6 +18,11 @@ public class FlashcardAppApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FlashcardAppApplication.class, args);
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 
     @Bean

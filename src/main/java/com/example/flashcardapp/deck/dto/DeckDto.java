@@ -18,8 +18,7 @@ public class DeckDto {
     private String category;
 
 
-    // TODO Ingen @JsonManagedReference??
-    private List<FlashcardDto> flashcards;
+   
 
 
 

@@ -5,18 +5,22 @@ import com.example.flashcardapp.deck.dto.DeckDto;
 import com.example.flashcardapp.deck.factory.DeckDtoFactory;
 import com.example.flashcardapp.deck.model.Deck;
 import com.example.flashcardapp.deck.service.DeckService;
-import org.springframework.data.domain.Page;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequestMapping("/api/deck")
 @RestController
 public class DeckController {
 
+    @Autowired
+    private ModelMapper modelMapper;
     private DeckService deckService;
 
     public DeckController(DeckService deckService) {
@@ -38,19 +42,23 @@ public class DeckController {
     @PostMapping(value = "/add")
     public ResponseEntity<DeckDto> addDeck(@RequestParam("name") String name,
                         @RequestParam("category") String category) {
+
         Deck deck = new Deck(name, category);
         deckService.addDeck(deck);
         return new ResponseEntity<>(DeckDtoFactory.convertFromEntityToDto(deck), HttpStatus.OK);
     }
     @GetMapping("/all")
-    public ResponseEntity<List<Deck>> getAllDecks(
+    public ResponseEntity<List<DeckDto>> getAllDecks(
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "10") Integer pageSize,
             @RequestParam(defaultValue = "id") String sortBy) {
 
         List<Deck> decks = deckService.getAllDecks(pageNo, pageSize, sortBy);
-        return new ResponseEntity<>(decks, HttpStatus.OK);
+        return new ResponseEntity<>(
+                decks.stream()
+                .map(deck -> modelMapper.map(deck, DeckDto.class))
+                .collect(Collectors.toList()),
+                HttpStatus.OK);
     }
-
 }
 

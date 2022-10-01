@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ApiException {
+public class ErrorMessage {
 
     private final String message;
     private final Throwable throwable;
