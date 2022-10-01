@@ -12,8 +12,8 @@ import java.time.ZonedDateTime;
 public class GlobalExceptionHandler {
 
 
-    @ExceptionHandler(value = {ApiRequestException.class})
-    public ResponseEntity<Object> handleApiRequestException(ApiRequestException e) {
+    @ExceptionHandler(value = {ResourceNotFoundException.class})
+    public ResponseEntity<Object> handleApiRequestException(ResourceNotFoundException e) {
 
         HttpStatus badRequest = HttpStatus.NOT_FOUND;
 

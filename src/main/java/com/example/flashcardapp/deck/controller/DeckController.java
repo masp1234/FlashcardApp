@@ -1,6 +1,6 @@
 package com.example.flashcardapp.deck.controller;
 
-import com.example.flashcardapp.advice.ApiRequestException;
+import com.example.flashcardapp.advice.ResourceNotFoundException;
 import com.example.flashcardapp.deck.dto.DeckDto;
 import com.example.flashcardapp.deck.factory.DeckDtoFactory;
 import com.example.flashcardapp.deck.model.Deck;
@@ -31,7 +31,7 @@ public class DeckController {
     public ResponseEntity<DeckDto> getDeckById(@PathVariable("id") Long id) {
         Optional<Deck> item = deckService.getDeckById(id);
         if (item.isEmpty()) {
-            throw new ApiRequestException("Could not find deck with id: " + id);
+            throw new ResourceNotFoundException("Could not find deck with id: " + id);
         }
         return new ResponseEntity<>(DeckDtoFactory.convertFromEntityToDto(item.get()), HttpStatus.OK);
     }

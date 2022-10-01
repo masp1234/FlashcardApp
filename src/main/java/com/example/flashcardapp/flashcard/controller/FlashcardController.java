@@ -1,6 +1,6 @@
 package com.example.flashcardapp.flashcard.controller;
 
-import com.example.flashcardapp.advice.ApiRequestException;
+import com.example.flashcardapp.advice.ResourceNotFoundException;
 import com.example.flashcardapp.flashcard.dto.FlashcardDto;
 import com.example.flashcardapp.flashcard.factory.FlashcardDtoFactory;
 import com.example.flashcardapp.flashcard.model.Flashcard;
@@ -28,7 +28,7 @@ public class FlashcardController {
     public ResponseEntity<List<FlashcardDto>> getAllFlashcards() {
         List<Flashcard> flashcards = flashcardService.getAll();
         if (flashcards.isEmpty()) {
-            throw new ApiRequestException("No flashcards found");
+            throw new ResourceNotFoundException("No flashcards found");
         }
         return new ResponseEntity<>(FlashcardDtoFactory.fromEntitiesToDtos(flashcards), HttpStatus.OK);
 

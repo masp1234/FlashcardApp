@@ -4,7 +4,6 @@ import com.example.flashcardapp.deck.dto.DeckDto;
 import com.example.flashcardapp.deck.factory.DeckDtoFactory;
 import com.example.flashcardapp.deck.model.Deck;
 import com.example.flashcardapp.deck.repository.DeckRepository;
-import net.bytebuddy.dynamic.DynamicType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.List.of;
 
 
 @Service

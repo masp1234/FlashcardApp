@@ -2,10 +2,7 @@ package com.example.flashcardapp.deck.model;
 
 import com.example.flashcardapp.flashcard.model.Flashcard;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -39,5 +36,18 @@ public class Deck {
     public Deck(String name, String category) {
         this.name = name;
         this.category = category;
+    }
+
+    public Deck(Long id, String name, String category) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+    }
+    @Override
+    public boolean equals(Object o) {
+        Deck otherDeck = (Deck) o;
+        return otherDeck.category.equals(this.category) &&
+                otherDeck.name.equals(this.name) &&
+                otherDeck.id.equals(this.id);
     }
 }
