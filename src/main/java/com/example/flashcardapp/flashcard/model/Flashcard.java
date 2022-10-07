@@ -34,7 +34,7 @@ public class Flashcard {
     @Column(name = "points")
     private int points;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "deck_id")
     @JsonBackReference
     private Deck deck;

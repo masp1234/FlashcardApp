@@ -28,9 +28,7 @@ public class Deck {
     private String category;
 
     //TODO Er nået til at skulle lave et relationship mellem Deck og Flashcard
-    @OneToMany(mappedBy = "deck")
-    @JsonManagedReference
-    @ToString.Exclude
+    @OneToMany
     private List<Flashcard> flashcards;
 
     public Deck(String name, String category) {

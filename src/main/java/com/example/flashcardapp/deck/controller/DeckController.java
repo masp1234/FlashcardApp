@@ -40,25 +40,18 @@ public class DeckController {
 
 
     @PostMapping(value = "/add")
-    public ResponseEntity<DeckDto> addDeck(@RequestParam("name") String name,
-                        @RequestParam("category") String category) {
-
-        Deck deck = new Deck(name, category);
+    public ResponseEntity<DeckDto> addDeck(@RequestBody Deck deck) {
         deckService.addDeck(deck);
         return new ResponseEntity<>(DeckDtoFactory.convertFromEntityToDto(deck), HttpStatus.OK);
     }
     @GetMapping("/all")
-    public ResponseEntity<List<DeckDto>> getAllDecks(
+    public ResponseEntity<List<Deck>> getAllDecks(
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "10") Integer pageSize,
             @RequestParam(defaultValue = "id") String sortBy) {
 
         List<Deck> decks = deckService.getAllDecks(pageNo, pageSize, sortBy);
-        return new ResponseEntity<>(
-                decks.stream()
-                .map(deck -> modelMapper.map(deck, DeckDto.class))
-                .collect(Collectors.toList()),
-                HttpStatus.OK);
+        return new ResponseEntity<>(decks, HttpStatus.OK);
     }
 }
 

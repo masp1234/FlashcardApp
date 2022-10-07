@@ -38,21 +38,6 @@ public class FlashcardAppApplication {
                     Deck deck = new Deck("Deck1", "kategori");
                     deckRepository.save(deck);
 
-                    List<Deck> decks = new ArrayList<>();
-                    decks.add(new Deck("Deck2", "dgfafg"));
-                    decks.add(new Deck("Deck3", "sssg"));
-                    decks.add(new Deck("Deck4", "agfhg"));
-                    decks.add(new Deck("Deck5", "dgfafg"));
-                    decks.add(new Deck("Deck6", "sssg"));
-                    decks.add(new Deck("Deck7", "agfhg"));
-                    decks.add(new Deck("Deck8", "dgfafg"));
-                    decks.add(new Deck("Deck9", "sssg"));
-                    decks.add(new Deck("Deck10", "agfhg"));
-                    decks.add(new Deck("Deck11", "dgfafg"));
-                    decks.add(new Deck("Deck12", "sssg"));
-                    decks.add(new Deck("Deck13", "agfhg"));
-
-                    deckRepository.saveAll(decks);
 
                     final List<Flashcard> flashcards = new ArrayList<>();
                     flashcards.add(new Flashcard(
@@ -83,8 +68,9 @@ public class FlashcardAppApplication {
 
                     flashcardRepository.saveAll(flashcards);
 
+                    deck.setFlashcards(flashcards);
+                    deckRepository.save(deck);
 
-                    System.out.println(deckRepository.getAllDecksOrderedByCategory());
 
 
 
