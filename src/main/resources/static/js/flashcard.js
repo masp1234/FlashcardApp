@@ -1,9 +1,6 @@
-"use strict"
 
+async function fetchDataByUrl(url) {
+    
+}
 
-
-    $(".hello").click(function() {
-        $(".hello").hide();
-
-    })
 

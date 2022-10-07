@@ -14,9 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class DeckControllerTest {
-
-    private DeckController deckController;
-
     private final String BASE_URL = "http://localhost:8080/api/deck/";
 
 
@@ -49,5 +46,6 @@ public class DeckControllerTest {
         assertEquals(expectedHttpStatusCode, response.getStatusLine().getStatusCode());
 
     }
+
 
 }
