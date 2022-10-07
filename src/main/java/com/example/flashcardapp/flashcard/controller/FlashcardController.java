@@ -23,12 +23,13 @@ public class FlashcardController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<FlashcardDto>> getAllFlashcards() {
+    public ResponseEntity<List<Flashcard>> getAllFlashcards() {
         List<Flashcard> flashcards = flashcardService.getAll();
         if (flashcards.isEmpty()) {
             throw new ResourceNotFoundException("No flashcards found");
         }
-        return new ResponseEntity<>(FlashcardDtoFactory.fromEntitiesToDtos(flashcards), HttpStatus.OK);
+        return new ResponseEntity<>(flashcards, HttpStatus.OK);
+
 
     }
     @GetMapping("/{id}")

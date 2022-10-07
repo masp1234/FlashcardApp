@@ -3,7 +3,9 @@ package com.example.flashcardapp;
 import com.example.flashcardapp.deck.model.Deck;
 import com.example.flashcardapp.deck.repository.DeckRepository;
 import com.example.flashcardapp.flashcard.model.Flashcard;
+import com.example.flashcardapp.flashcard.model.TestItem;
 import com.example.flashcardapp.flashcard.repository.FlashcardRepository;
+import com.example.flashcardapp.testitem.repository.TestItemRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -29,47 +31,38 @@ public class FlashcardAppApplication {
     public CommandLineRunner importData(
 
             FlashcardRepository flashcardRepository,
-            DeckRepository deckRepository
+            DeckRepository deckRepository,
+            TestItemRepository testItemRepository
     )
     {
                 return (args) -> {
 
+                    Deck deck = new Deck();
+                    deck.setName("testdeck");
+                    deckRepository.save(deck);
 
-                    Deck deck = new Deck("Deck1", "kategori");
+                    Flashcard flashcard = new Flashcard();
+                    flashcard.setPoints(5);
+                    flashcard.setDeck(deck);
+                    flashcardRepository.save(flashcard);
+
+                    TestItem testItem = new TestItem();
+                    testItem.setText("test");
+                    testItem.setFlashcard(flashcard);
+                    testItemRepository.save(testItem);
+
+                    flashcard.setTestItems(List.of(testItem));
+                    flashcardRepository.save(flashcard);
+
+
+
+                    deck.setFlashcards(List.of(flashcard));
+
+
                     deckRepository.save(deck);
 
 
-                    final List<Flashcard> flashcards = new ArrayList<>();
-                    flashcards.add(new Flashcard(
-                            "Hvad er scrum?",
-                            "En process-model",
-                            3, deck
-                    ));
-                    flashcards.add(new Flashcard(
-                            "Hvad er XP?",
-                            "En udviklings-model",
-                            3, deck
-                    ));
-                    flashcards.add(new Flashcard(
-                            "Hvad menes der med Product Backlog?",
-                            "En samling af alle de artefakter, der skal laves" +
-                                    "i et scrum-projekt. Udvikler/ændre sig over tid(er levende)",
-                            5, deck
-                    ));
-                    flashcards.add(new Flashcard(
-                            "Hvad menes der med Sprint Backlog?",
-                            "En samling af artefakter, der er udvalgt til " +
-                                    "at skulle laves i et givent sprint" +
-                                    ". Artefakterne udvælges fra Product Backlog",
-                            5, deck
-                    ));
 
-
-
-                    flashcardRepository.saveAll(flashcards);
-
-                    deck.setFlashcards(flashcards);
-                    deckRepository.save(deck);
 
 
 

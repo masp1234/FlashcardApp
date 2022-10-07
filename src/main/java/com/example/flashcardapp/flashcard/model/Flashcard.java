@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
@@ -38,6 +39,10 @@ public class Flashcard {
     @JoinColumn(name = "deck_id")
     @JsonBackReference
     private Deck deck;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<TestItem> testItems;
+
 
     public Flashcard(String questionText, String answerText, int points, Deck deck) {
         this.questionText = questionText;
