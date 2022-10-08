@@ -35,12 +35,11 @@ public class Flashcard {
     @Column(name = "points")
     private int points;
 
-    @ManyToOne()
-    @JoinColumn(name = "deck_id")
+    @ManyToOne
     @JsonBackReference
     private Deck deck;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "flashcard")
     private List<TestItem> testItems;
 
 
