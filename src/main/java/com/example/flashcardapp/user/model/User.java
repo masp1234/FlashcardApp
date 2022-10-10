@@ -1,12 +1,14 @@
 package com.example.flashcardapp.user.model;
 
 
+import com.example.flashcardapp.deck.model.Deck;
 import jdk.jfr.Enabled;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,6 +21,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
     @Column(name = "first_name")
@@ -29,6 +32,17 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
+    private String password;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_deck",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "deck_id")
+    )
+    private List<Deck> decks;
 
     public User(String firstName, String lastName, String email) {
         this.firstName = firstName;

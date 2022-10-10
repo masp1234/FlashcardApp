@@ -1,6 +1,7 @@
 package com.example.flashcardapp.deck.model;
 
 import com.example.flashcardapp.flashcard.model.Flashcard;
+import com.example.flashcardapp.user.model.User;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
@@ -30,6 +31,9 @@ public class Deck {
     //TODO Er nået til at skulle lave et relationship mellem Deck og Flashcard
     @OneToMany
     private List<Flashcard> flashcards;
+
+    @ManyToMany(mappedBy = "decks")
+    private List<User> users;
 
     public Deck(String name, String category) {
         this.name = name;
