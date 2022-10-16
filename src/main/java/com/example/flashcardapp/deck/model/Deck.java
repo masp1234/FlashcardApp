@@ -29,7 +29,7 @@ public class Deck {
     private String category;
 
     //TODO Er nået til at skulle lave et relationship mellem Deck og Flashcard
-    @OneToMany
+    @OneToMany(mappedBy = "deck")
     private List<Flashcard> flashcards;
 
     @ManyToMany(mappedBy = "decks")

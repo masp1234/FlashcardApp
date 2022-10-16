@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 @RequestMapping("/api/deck")
 @RestController
+@CrossOrigin
 public class DeckController {
 
     @Autowired

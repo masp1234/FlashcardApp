@@ -34,9 +34,19 @@ public class FlashcardAppApplication {
     {
                 return (args) -> {
 
-
+                    List<Deck> decks = new ArrayList<>();
                     Deck deck = new Deck("Deck1", "kategori");
-                    deckRepository.save(deck);
+                    decks.add(deck);
+
+                    Deck deck2 = new Deck("Deck2", "kategori2");
+                    decks.add(deck2);
+                    Deck deck3 = new Deck("Deck3", "kategori3");
+                    decks.add(deck3);
+
+                    deckRepository.saveAll(decks);
+
+
+
 
 
                     final List<Flashcard> flashcards = new ArrayList<>();
