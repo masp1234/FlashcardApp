@@ -73,6 +73,37 @@ public class FlashcardAppApplication {
                                     ". Artefakterne udvælges fra Product Backlog",
                             5, deck
                     ));
+                    flashcards.add(new Flashcard(
+                            "test5",
+                            "test5",
+                            5, deck
+                    ));
+
+                    flashcards.add(new Flashcard(
+                            "test6",
+                            "test6",
+                            5, deck
+                    ));
+                    flashcards.add(new Flashcard(
+                            "test7",
+                            "test7",
+                            5, deck
+                    ));
+                    flashcards.add(new Flashcard(
+                            "test8",
+                            "test8",
+                            5, deck
+                    ));
+                    flashcards.add(new Flashcard(
+                            "test9",
+                            "test9",
+                            5, deck
+                    ));
+                    flashcards.add(new Flashcard(
+                            "test10",
+                            "test10",
+                            5, deck
+                    ));
 
 
 
